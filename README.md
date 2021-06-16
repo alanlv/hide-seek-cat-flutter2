@@ -5,7 +5,7 @@
 - 本仓库使用Flutter2跨多端，现已支持APP、Web，全面启用空安全
 - 目前的技术选型：
     - 躲猫猫官网：React(性能优化的最佳实践)
-    - APP(ios android web)；Flutter2.2(拥抱空安全，多端运行)
+    - APP(ios android web)；Flutter2.2(拥抱空安全，多端运行, google ads，navigator2)
     - 后端服务：Go
 - 未来的计划：
     - 主打**社交** + **短视频**
