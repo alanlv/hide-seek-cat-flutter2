@@ -26,8 +26,8 @@ class AppHttps {
   AppHttps._internal() {
     /// Base Options
     BaseOptions options = new BaseOptions(
-      // baseUrl: SERVER_API_URL,
-      baseUrl: SERVER_API_WEB_URL,
+      baseUrl: SERVER_API_URL,
+      // baseUrl: SERVER_API_WEB_URL,
       connectTimeout: 10000,
       receiveTimeout: 5000,
       headers: {},

@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:hide_seek_cat_flutter2/common/provider/provider.dart';
 import 'package:hide_seek_cat_flutter2/global.dart';
 import 'package:hide_seek_cat_flutter2/pages/index/index.dart';
 import 'package:hide_seek_cat_flutter2/routes.dart';
 import 'package:hide_seek_cat_flutter2/theme.dart';
+import 'package:provider/provider.dart';
 
 /**
  * 躲猫猫短视频社交APP
@@ -11,7 +13,17 @@ import 'package:hide_seek_cat_flutter2/theme.dart';
  * @author yinlei
  * @date 2021/6/15
  */
-void main() => AppGlobal.init().then((e) => runApp(MyApp()));
+void main() => AppGlobal.init().then((e) => runApp(
+  MultiProvider(
+    providers: [
+      ChangeNotifierProvider(
+        create: (_) => UserModel(),
+      ),
+      // ChangeNotifierProvider.value(value: null)
+    ],
+    child: MyApp(),
+  ),
+));
 
 
 class MyApp extends StatelessWidget {

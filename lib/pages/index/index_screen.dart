@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:hide_seek_cat_flutter2/global.dart';
+import 'package:hide_seek_cat_flutter2/pages/application/application.dart';
+import 'package:hide_seek_cat_flutter2/pages/sign/sign.dart';
 import 'package:hide_seek_cat_flutter2/pages/welcome/welcome.dart';
 
 /**
@@ -11,7 +14,9 @@ class IndexScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: WelcomeScreen(),
+      body: AppGlobal.isFirstOpen == true ? WelcomeScreen() : (
+          AppGlobal.isOfflineLogin == true ? ApplicationScreen() : ManagerScreen()
+      ),
     );
   }
 }

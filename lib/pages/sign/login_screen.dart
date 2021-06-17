@@ -3,12 +3,14 @@ import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:hide_seek_cat_flutter2/common/api/api.dart';
 import 'package:hide_seek_cat_flutter2/common/entity/entity.dart';
+import 'package:hide_seek_cat_flutter2/common/provider/provider.dart';
 import 'package:hide_seek_cat_flutter2/common/utils/utils.dart';
 import 'package:hide_seek_cat_flutter2/common/values/values.dart';
 import 'package:hide_seek_cat_flutter2/common/widgets/widgets.dart';
 import 'package:hide_seek_cat_flutter2/global.dart';
 import 'package:hide_seek_cat_flutter2/pages/application/application.dart';
 import 'package:hide_seek_cat_flutter2/pages/sign/sign.dart';
+import 'package:provider/provider.dart';
 import 'package:rive/rive.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 /**
@@ -62,9 +64,9 @@ class _LoginScreenState extends State<LoginScreen> {
       Profile? res = await UserApi.login(context: context, params: params);
       if(res != null){
         AppGlobal.profile.token = res.token;
-        // userModel.user = params;
+        Provider.of<UserModel>(context, listen: false).user = params;
         appShowToast(msg: '登陆成功@');
-        Navigator.of(context).pushReplacementNamed(ApplicationScreen.routeName);
+        Navigator.of(context).pushNamedAndRemoveUntil(ApplicationScreen.routeName, (route) => false,);
       }
     }
   }
