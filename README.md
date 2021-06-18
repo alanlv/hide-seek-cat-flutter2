@@ -60,6 +60,66 @@
 ```
 - IDE: AndroidStudio4.2.1
 
+
+## 程序图标
+
+制作：https://www.designevo.com/logo-maker/
+
+参考Android和iOS的最大尺寸[1024*1024]
+
+然后FlutterLaunchIcons:https://pub.dev/packages/flutter_launcher_icons
+
+## 启动图
+
+制作：https://www.canva.cn/design/DAEZRss1im4/MReV8kx4yCpmmJpLMtf9QQ/edit
+
+在线生成不同的图片格式：https://hotpot.ai/icon-resizer?s=sidebar
+
+然后将android/res/下的相关图片覆盖并修改drawable配置即可。
+
+## 程序名称
+
+android下的清单文件下改label
+
+## 生成证书
+
+AS可GUI操作，
+
+如果命令操作,进入app输入如下命令：
+
+```js
+keytool -genkey -v -keystore ./key.jks -keyalg RSA -keysize 2048 -validity 10000 -alias key
+```
+
+将在android/app/下生成key.jks
+
+然后android下新建key.properties编写配置。
+
+最后修改android/app/build.gradle配置即可。
+
+【上述语法需要gradle知识】
+
+## 混淆
+
+android/gradle.properties添加：
+
+```js
+extra-gen-snapshot-options=--obfuscate
+```
+
+修改build相关release配置即可。
+
+## 编译打包
+
+```js
+flutter build apk --split-per-abi
+```
+
+打出的v8兼容v7,对外发布一般用v7包，x86是模拟器
+
+## 错误上报
+Sentry: https://sentry.io/welcome/
+
 # Community
 
 ## Community channels
