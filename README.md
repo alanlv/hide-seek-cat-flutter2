@@ -60,6 +60,7 @@
     • Edge (web)                         • edge          • web-javascript • Microsoft Edge 91.0.864.4
 ```
 - IDE: AndroidStudio4.2.1
+- Github Actions CI/CD Flutter Web
 
 
 ## 程序图标
