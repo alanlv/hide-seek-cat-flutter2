@@ -1,9 +1,12 @@
 # This is a generated file; do not edit or check into version control.
+device_info=D:\\flutter\\.pub-cache\\hosted\\pub.flutter-io.cn\\device_info-2.0.2\\
 fluttertoast=D:\\flutter\\.pub-cache\\hosted\\pub.flutter-io.cn\\fluttertoast-8.0.7\\
+package_info=D:\\flutter\\.pub-cache\\hosted\\pub.flutter-io.cn\\package_info-2.0.2\\
 path_provider=D:\\flutter\\.pub-cache\\hosted\\pub.flutter-io.cn\\path_provider-2.0.2\\
 path_provider_linux=D:\\flutter\\.pub-cache\\hosted\\pub.flutter-io.cn\\path_provider_linux-2.0.0\\
 path_provider_macos=D:\\flutter\\.pub-cache\\hosted\\pub.flutter-io.cn\\path_provider_macos-2.0.0\\
 path_provider_windows=D:\\flutter\\.pub-cache\\hosted\\pub.flutter-io.cn\\path_provider_windows-2.0.1\\
+permission_handler=D:\\flutter\\.pub-cache\\hosted\\pub.flutter-io.cn\\permission_handler-8.1.1\\
 share=D:\\flutter\\.pub-cache\\hosted\\pub.flutter-io.cn\\share-2.0.4\\
 shared_preferences=D:\\flutter\\.pub-cache\\hosted\\pub.flutter-io.cn\\shared_preferences-2.0.6\\
 shared_preferences_linux=D:\\flutter\\.pub-cache\\hosted\\pub.flutter-io.cn\\shared_preferences_linux-2.0.0\\

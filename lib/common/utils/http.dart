@@ -82,7 +82,6 @@ class AppHttps {
     dio.interceptors.add(AppNetCache());
 
     // add network proxy. please visit:https://pub.dev/packages/dio #HttpClientAdapter
-    // if(!AppGlobal.isRelease && PROXY_ENABLE) {
     if(PROXY_ENABLE) {
       (dio.httpClientAdapter as DefaultHttpClientAdapter).onHttpClientCreate = (client) {
         // config the http client

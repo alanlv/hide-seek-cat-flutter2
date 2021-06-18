@@ -52,6 +52,16 @@ dependencies:
   webview_flutter: ^2.0.8
   # 分享
   share: ^2.0.4
+  # 设备信息
+  device_info: ^2.0.2
+  # 包信息
+  package_info: ^2.0.2
+  # 路径
+  path_provider: ^2.0.2
+  # 权限处理
+  permission_handler: ^8.1.1
+  # 安装apk
+  # install_plugin: ^2.0.1
 
 dev_dependencies:
   flutter_test:
