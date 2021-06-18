@@ -1,13 +1,13 @@
 import 'dart:io';
 
-import 'package:device_info/device_info.dart';
+import 'package:device_info_plus/device_info_plus.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:hide_seek_cat_flutter2/common/entity/entity.dart';
 import 'package:hide_seek_cat_flutter2/common/utils/utils.dart';
 import 'package:hide_seek_cat_flutter2/common/values/values.dart';
-import 'package:package_info/package_info.dart';
+import 'package:package_info_plus/package_info_plus.dart';
 
 /**
  * APP全局数据管理
@@ -39,6 +39,9 @@ class AppGlobal {
   /// android device information
   static late AndroidDeviceInfo androidDeviceInfo;
 
+  /// android device information
+  static late WebBrowserInfo webBrowserInfo;
+
   /// ios device information
   static late IosDeviceInfo iosDeviceInfo;
 
@@ -68,6 +71,8 @@ class AppGlobal {
     /// init AppSocketIo util.
     // AppSocketIo();
 
+    /// read current device's information
+    DeviceInfoPlugin deviceInfoPlugin = DeviceInfoPlugin();
     if(!kIsWeb){
       /// change android's statusbar to transparent.
       if(AppGlobal.isAndroid) {
@@ -76,16 +81,21 @@ class AppGlobal {
         );
         SystemChrome.setSystemUIOverlayStyle(systemUiOverlayStyle);
       }
-
-      /// read current device's information
-      DeviceInfoPlugin deviceInfoPlugin = DeviceInfoPlugin();
+      
       if(AppGlobal.isIOS) {
         AppGlobal.iosDeviceInfo = await deviceInfoPlugin.iosInfo;
+        print('Running on ${AppGlobal.iosDeviceInfo.utsname.machine}');
       } else if(AppGlobal.isAndroid) {
         AppGlobal.androidDeviceInfo = await deviceInfoPlugin.androidInfo;
+        print('Running on ${AppGlobal.androidDeviceInfo.model}');
       }
       /// read app package information
       AppGlobal.packageInfo = await PackageInfo.fromPlatform();
+    }
+
+    if(kIsWeb) {
+      AppGlobal.webBrowserInfo = await deviceInfoPlugin.webBrowserInfo;
+      print('Running on ${AppGlobal.webBrowserInfo.userAgent}');
     }
 
   }

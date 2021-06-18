@@ -51,17 +51,17 @@ dependencies:
   # webview
   webview_flutter: ^2.0.8
   # 分享
-  share: ^2.0.4
+  share_plus: ^2.1.4
   # 设备信息
-  device_info: ^2.0.2
+  device_info_plus: ^2.0.1
   # 包信息
-  package_info: ^2.0.2
+  package_info_plus: ^1.0.3
   # 路径
   path_provider: ^2.0.2
   # 权限处理
   permission_handler: ^8.1.1
-  # 安装apk
-  # install_plugin: ^2.0.1
+  # 静默安装apk
+  flutter_install_apk_silently: ^0.2.0
   # 错误上报
   sentry_flutter: ^5.1.0
 

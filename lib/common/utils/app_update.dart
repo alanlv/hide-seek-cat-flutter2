@@ -2,6 +2,7 @@ import 'dart:io';
 
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_install_apk_silently/flutter_install_apk_silently.dart';
 import 'package:hide_seek_cat_flutter2/common/api/api.dart';
 import 'package:hide_seek_cat_flutter2/common/entity/entity.dart';
 import 'package:hide_seek_cat_flutter2/common/utils/utils.dart';
@@ -62,7 +63,7 @@ class AppUpdate {
             var url = _appUpdateInfo.shopUrl!.isEmpty
                 ? 'https://itunes.apple.com/cn/app/%E5%86%8D%E6%83%A0%E5%90%88%E4%BC%99%E4%BA%BA/id1375433239?l=zh&ls=1&mt=8'
                 : _appUpdateInfo.shopUrl;
-            // InstallPlugin.gotoAppStore(url);
+            appShowToast(msg: "ios跳转appstore暂未开发");
           } else if(AppGlobal.isAndroid) {
             /// download apk and install.
             appShowToast(msg: "后台下载新版APK……");
@@ -100,7 +101,7 @@ class AppUpdate {
     /// if the target platform is higher than android 24:
     /// a [appId] is required
     /// (the caller's applicationId which is defined in build.gradle)
-    // await InstallPlugin.installApk(fullPath, AppGlobal.packageInfo.packageName);
+    await FlutterInstallApkSilently.installAPK(file: file);
   }
 
 }

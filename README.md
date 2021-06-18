@@ -17,6 +17,7 @@
 # Development environment
 
 [后端开发是本地部署，所以登陆时候，请切换values/server.dart的server_url]
+[permission_handler本项目暂时未配置ios设置，i don't have macbook pro now.]
 - flutter env
 ```go
 [√] Flutter (Channel stable, 2.2.0, on Microsoft Windows [Version 10.0.19043.985], locale zh-CN)

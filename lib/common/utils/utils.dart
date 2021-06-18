@@ -7,3 +7,4 @@ export 'http_cache.dart';
 export 'authentication.dart';
 export 'app_update.dart';
 export 'dialog.dart';
+export 'share.dart';
