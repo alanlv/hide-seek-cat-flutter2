@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:hide_seek_cat_flutter2/common/utils/utils.dart';
 import 'package:hide_seek_cat_flutter2/global.dart';
@@ -22,7 +23,9 @@ class _IndexScreenState extends State<IndexScreen> {
   @override
   void initState() {
     super.initState();
-    checkAppUpdateAndRequestPermission();
+    if (!kIsWeb) {
+      checkAppUpdateAndRequestPermission();
+    }
   }
 
   Future checkAppUpdateAndRequestPermission() async {
