@@ -71,75 +71,76 @@ class _LoginScreenState extends State<LoginScreen> {
     }
   }
 
-  Widget _buildLoginHeader(bool isDesktop) {
+  Widget _buildLoginHeader() {
     return Container(
-      child: Column(
-        children: [
-          SizedBox(
-            width: 1.sw,
-            height: isDesktop ? 0.5.sh : 0.3.sh,
-            child: RiveAnimation.asset(
-              'assets/rives/224-424-luke-vs-darth.riv',
-              controllers: [_riveController],
-              onInit: () => setState(() {}),
-              fit: BoxFit.cover,
-            ),
-          ),
-          Padding(
-            padding: EdgeInsets.all(10.r),
-            child: FractionallySizedBox(
-              widthFactor: 1.0,
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  AnimatedTextKit(
-                    animatedTexts: [
-                      ColorizeAnimatedText(
-                        '登录',
-                        speed: Duration(milliseconds: 1500),
-                        textStyle: Theme.of(context).textTheme.headline6!.copyWith(
-                          letterSpacing: 1.5,
-                          height: 1.5,
-                          fontWeight: FontWeight.bold,
-                        ),
-                        colors: [
-                          Colors.black87,
-                          Colors.black54,
-                          Colors.black38,
-                          Colors.white10,
-                        ],
-                      ),
-                    ],
-                    isRepeatingAnimation: true,
-                    totalRepeatCount: 5,
-                    onTap: () {
-                    },
-                  ),
-                  Text(
-                    '专属您的账号登入,就可以拍摄分享您的生活短视频，用短视频记录生活的点点滴滴。采用大数据推荐系统和AI，快速匹配共同话题的小伙伴。你还怕奋斗的道路上形单影只？在这里可以快速找到志同道合的朋友，本产品为您的幸福与快乐持续助力！',
-                    style: Theme.of(context).textTheme.bodyText2?.copyWith(
-                      letterSpacing: 1.2,
-                      height: 1.6,
-                    ),
-                  ),
-                ],
-              ),
-            ),
-          ),
-        ],
+      child: SizedBox(
+        width: 1.sw,
+        height: !AppResponsive.isMobile(context) ? 1.sh : 0.3.sh,
+        child: RiveAnimation.asset(
+          'assets/rives/224-424-luke-vs-darth.riv',
+          controllers: [_riveController],
+          onInit: () => setState(() {}),
+          fit: BoxFit.cover,
+        ),
       ),
     );
   }
 
-  Widget _buildLoginInput(bool isDesktop) {
+  Widget _buildLoginTips() {
+    return Container(
+      child:  Padding(
+        padding: EdgeInsets.all(10.r),
+        child: FractionallySizedBox(
+          widthFactor: 1.0,
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              AnimatedTextKit(
+                animatedTexts: [
+                  ColorizeAnimatedText(
+                    '登录',
+                    speed: Duration(milliseconds: 1500),
+                    textStyle: Theme.of(context).textTheme.headline6!.copyWith(
+                      letterSpacing: 1.5,
+                      height: 1.5,
+                      fontWeight: FontWeight.bold,
+                    ),
+                    colors: [
+                      Colors.black87,
+                      Colors.black54,
+                      Colors.black38,
+                      Colors.white10,
+                    ],
+                  ),
+                ],
+                isRepeatingAnimation: true,
+                totalRepeatCount: 5,
+                onTap: () {
+                },
+              ),
+              Text(
+                '专属您的账号登入,就可以拍摄分享您的生活短视频，用短视频记录生活的点点滴滴。采用大数据推荐系统和AI，快速匹配共同话题的小伙伴。你还怕奋斗的道路上形单影只？在这里可以快速找到志同道合的朋友，本产品为您的幸福与快乐持续助力！',
+                style: Theme.of(context).textTheme.bodyText2?.copyWith(
+                  letterSpacing: 1.2,
+                  height: 1.6,
+                ),
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+
+  Widget _buildLoginInput() {
     return FractionallySizedBox(
-      widthFactor: isDesktop ? 0.5 : 1.0,
+      widthFactor: !AppResponsive.isMobile(context) ? 0.5 : 1.0,
       child: Padding(
         padding: EdgeInsets.all(10.r),
         child: Form(
           key: _formKey,
           autovalidateMode: AutovalidateMode.onUserInteraction,
-            child: Column(
+          child: Column(
             children: [
               AppInput(
                 controller: _userNameController,
@@ -169,17 +170,17 @@ class _LoginScreenState extends State<LoginScreen> {
                 widthFactor: 1.0,
                 child: RichText(
                   textAlign: TextAlign.end,
-                 text: TextSpan(
-                   text: '还没领取您的专属账号？',
-                   style: Theme.of(context).textTheme.bodyText2,
-                   children: <TextSpan>[
-                     TextSpan(
-                         text: '注册',
-                         recognizer: _tapGotoRegister,
-                         style: TextStyle(fontWeight: FontWeight.bold, decoration: TextDecoration.underline,)),
-                     TextSpan(text: '在这里哦~'),
-                   ],
-                 ),
+                  text: TextSpan(
+                    text: '还没领取您的专属账号？',
+                    style: Theme.of(context).textTheme.bodyText2,
+                    children: <TextSpan>[
+                      TextSpan(
+                          text: '注册',
+                          recognizer: _tapGotoRegister,
+                          style: TextStyle(fontWeight: FontWeight.bold, decoration: TextDecoration.underline,)),
+                      TextSpan(text: '在这里哦~'),
+                    ],
+                  ),
                 ),
               ),
             ],
@@ -189,9 +190,9 @@ class _LoginScreenState extends State<LoginScreen> {
     );
   }
 
-  Widget _buildlLoginBtn(bool isDesktop) {
+  Widget _buildlLoginBtn() {
     return FractionallySizedBox(
-      widthFactor: isDesktop ? 0.5 : 1.0,
+      widthFactor: !AppResponsive.isMobile(context) ? 0.5 : 1.0,
       child: Padding(
         padding: EdgeInsets.all(10.r),
         child: AppSocialButton(
@@ -203,9 +204,9 @@ class _LoginScreenState extends State<LoginScreen> {
     );
   }
 
-  Widget _buildSocialLoginBtn(bool isDesktop) {
+  Widget _buildSocialLoginBtn() {
     return FractionallySizedBox(
-      widthFactor: isDesktop ? 0.5 : 1.0,
+      widthFactor: !AppResponsive.isMobile(context) ? 0.5 : 1.0,
       child: Padding(
         padding: EdgeInsets.all(10.r),
         child: Column(
@@ -254,26 +255,30 @@ class _LoginScreenState extends State<LoginScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       resizeToAvoidBottomInset: false,
-      body: LayoutBuilder(
-        builder: (BuildContext context, BoxConstraints constraints) {
-          var isDesktop = constraints.maxWidth > AppDeviceSizes.mobileWidth;
-          return Scrollbar(
-            child: SingleChildScrollView(
-              child: Column(
-                children: [
-                  _buildLoginHeader(isDesktop),
-                  Wrap(
-                    children: [
-                      _buildLoginInput(isDesktop),
-                      _buildSocialLoginBtn(isDesktop),
-                    ],
-                  ),
-                  _buildlLoginBtn(isDesktop),
-                ],
+      body: Scrollbar(
+        child: SingleChildScrollView(
+          child: Column(
+            children: [
+              _buildLoginHeader(),
+              SizedBox(
+                height: !AppResponsive.isMobile(context) ? 1.sh : null,
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: [
+                    _buildLoginTips(),
+                    Wrap(
+                      children: [
+                        _buildLoginInput(),
+                        _buildSocialLoginBtn(),
+                      ],
+                    ),
+                    _buildlLoginBtn(),
+                  ],
+                ),
               ),
-            ),
-          );
-        },
+            ],
+          ),
+        ),
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: _handleTogglePlay,

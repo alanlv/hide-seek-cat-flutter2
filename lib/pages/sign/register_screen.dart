@@ -142,98 +142,61 @@ class _RegisterScreenState extends State<RegisterScreen> with TickerProviderStat
       });
   }
 
-  Widget _buildRegisterHeader(bool isDesktop) {
+  Widget _buildRegisterHeader() {
     return Container(
-      child: Column(
-        children: [
-          SizedBox(
-            width: 1.sw,
-            height: isDesktop ? 0.5.sh : 0.3.sh,
-            child: RiveAnimation.asset(
-              'assets/rives/240-469-viking-cartoon.riv',
-              animations: const ['Animation 1'],
-              controllers: [_riveController],
-              onInit: () => setState(() {}),
-              fit: BoxFit.cover,
-            ),
-          ),
-          Padding(
-            padding: EdgeInsets.all(10.r),
-            child: FractionallySizedBox(
-              widthFactor: 1.0,
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  AnimatedTextKit(
-                    animatedTexts: [
-                      ColorizeAnimatedText(
-                        '注册',
-                        speed: Duration(milliseconds: 1500),
-                        textStyle: Theme.of(context).textTheme.headline6!.copyWith(
-                          letterSpacing: 1.5,
-                          height: 1.5,
-                          fontWeight: FontWeight.bold,
-                        ),
-                        colors: [
-                          Colors.black87,
-                          Colors.black54,
-                          Colors.black38,
-                          Colors.white10,
-                        ],
-                      ),
-                    ],
-                    isRepeatingAnimation: true,
-                    totalRepeatCount: 5,
-                    onTap: () {
-                    },
-                  ),
-                  Text(
-                    '申请专属于您的账号,就可以拍摄分享您的生活短视频，用短视频记录生活的点点滴滴。采用大数据推荐系统和AI，快速匹配共同话题的小伙伴。你还怕奋斗的道路上形单影只？在这里可以快速找到志同道合的朋友，本产品为您的幸福与快乐持续助力！',
-                    style: Theme.of(context).textTheme.bodyText2?.copyWith(
-                      letterSpacing: 1.2,
-                      height: 1.6,
-                    ),
-                  ),
-                ],
-              ),
-            ),
-          ),
-        ],
+      child: SizedBox(
+        width: 1.sw,
+        height: !AppResponsive.isMobile(context) ? 1.sh : 0.3.sh,
+        child: RiveAnimation.asset(
+          'assets/rives/240-469-viking-cartoon.riv',
+          animations: const ['Animation 1'],
+          controllers: [_riveController],
+          onInit: () => setState(() {}),
+          fit: BoxFit.cover,
+        ),
       ),
     );
   }
 
-  Widget _buildRegisterInput(bool isDesktop) {
-    return FractionallySizedBox(
-      widthFactor: isDesktop ? 0.4 : 1.0,
+
+  Widget _buildLoginTips() {
+    return Container(
       child: Padding(
         padding: EdgeInsets.all(10.r),
-        child: Form(
-          key: _registerFormKey,
-          autovalidateMode: AutovalidateMode.onUserInteraction,
+        child: FractionallySizedBox(
+          widthFactor: 1.0,
           child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              AppInput(
-                controller: _userNameController,
-                labelText: '用户名',
-                hintText: 'Account',
-                marginTop: 0,
+              AnimatedTextKit(
+                animatedTexts: [
+                  ColorizeAnimatedText(
+                    '注册',
+                    speed: Duration(milliseconds: 1500),
+                    textStyle: Theme.of(context).textTheme.headline6!.copyWith(
+                      letterSpacing: 1.5,
+                      height: 1.5,
+                      fontWeight: FontWeight.bold,
+                    ),
+                    colors: [
+                      Colors.black87,
+                      Colors.black54,
+                      Colors.black38,
+                      Colors.white10,
+                    ],
+                  ),
+                ],
+                isRepeatingAnimation: true,
+                totalRepeatCount: 5,
+                onTap: () {
+                },
               ),
-              AppInput(
-                  controller: _userPasswordController,
-                  labelText: '密码',
-                  hintText: 'Password',
-                  isPassword: true,
-                  obscureText: true,
-                  suffixIcon: Icon(Icons.lock_rounded)
-              ),
-              AppInput(
-                  controller: _userConfirmPasswordController,
-                  labelText: '确认密码',
-                  hintText: 'Confirm password',
-                  isPassword: true,
-                  obscureText: true,
-                  suffixIcon: Icon(Icons.lock_rounded)
+              Text(
+                '申请专属于您的账号,就可以拍摄分享您的生活短视频，用短视频记录生活的点点滴滴。采用大数据推荐系统和AI，快速匹配共同话题的小伙伴。你还怕奋斗的道路上形单影只？在这里可以快速找到志同道合的朋友，本产品为您的幸福与快乐持续助力！',
+                style: Theme.of(context).textTheme.bodyText2?.copyWith(
+                  letterSpacing: 1.2,
+                  height: 1.6,
+                ),
               ),
             ],
           ),
@@ -242,7 +205,43 @@ class _RegisterScreenState extends State<RegisterScreen> with TickerProviderStat
     );
   }
 
-  Widget _buildRegisterBtn(bool isDesktop) {
+  Widget _buildRegisterInput() {
+    return Padding(
+      padding: EdgeInsets.all(10.r),
+      child: Form(
+        key: _registerFormKey,
+        autovalidateMode: AutovalidateMode.onUserInteraction,
+        child: Column(
+          children: [
+            AppInput(
+              controller: _userNameController,
+              labelText: '用户名',
+              hintText: 'Account',
+              marginTop: 0,
+            ),
+            AppInput(
+                controller: _userPasswordController,
+                labelText: '密码',
+                hintText: 'Password',
+                isPassword: true,
+                obscureText: true,
+                suffixIcon: Icon(Icons.lock_rounded)
+            ),
+            AppInput(
+                controller: _userConfirmPasswordController,
+                labelText: '确认密码',
+                hintText: 'Confirm password',
+                isPassword: true,
+                obscureText: true,
+                suffixIcon: Icon(Icons.lock_rounded)
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+
+  Widget _buildRegisterBtn() {
     return AnimatedBuilder(
       animation: _scaleController,
       builder: (context, child) => Transform.scale(
@@ -256,7 +255,7 @@ class _RegisterScreenState extends State<RegisterScreen> with TickerProviderStat
               padding: EdgeInsets.all(10.r),
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(50),
-                color: isDesktop ? AppColors.primaryDarkColor.withOpacity(.4) : AppColors.primaryColor.withOpacity(.4),
+                color: !AppResponsive.isMobile(context) ? AppColors.primaryDarkColor.withOpacity(.4) : AppColors.primaryColor.withOpacity(.4),
               ),
               child: InkWell(
                 onTap: () {
@@ -278,7 +277,7 @@ class _RegisterScreenState extends State<RegisterScreen> with TickerProviderStat
                                   height: 60.r,
                                   decoration: BoxDecoration(
                                     shape: BoxShape.circle,
-                                    color: isDesktop ? AppColors.primaryDarkColor : AppColors.primaryColor,
+                                    color: !AppResponsive.isMobile(context) ? AppColors.primaryDarkColor : AppColors.primaryColor,
                                   ),
                                   child: hideIcon == false ? Icon(Icons.arrow_forward, color: Colors.white,) : Container(),
                                 ),
@@ -301,30 +300,25 @@ class _RegisterScreenState extends State<RegisterScreen> with TickerProviderStat
   Widget build(BuildContext context) {
     return Scaffold(
       resizeToAvoidBottomInset: false,
-      body: LayoutBuilder(
-        builder: (BuildContext context, BoxConstraints constraints) {
-          var isDesktop = constraints.maxWidth > AppDeviceSizes.mobileWidth;
-          return Scrollbar(
-            child: SingleChildScrollView(
-              child: Column(
-                children: [
-                  _buildRegisterHeader(isDesktop),
-                  FractionallySizedBox(
-                    widthFactor: 1.0,
-                    child: Wrap(
-                      alignment: WrapAlignment.spaceEvenly,
-                      crossAxisAlignment: WrapCrossAlignment.center,
-                      children: [
-                        _buildRegisterInput(isDesktop),
-                        _buildRegisterBtn(isDesktop),
-                      ],
-                    ),
-                  ),
-                ],
+      body: Scrollbar(
+        child: SingleChildScrollView(
+          child: Column(
+            children: [
+              _buildRegisterHeader(),
+              SizedBox(
+                height: !AppResponsive.isMobile(context) ? 1.sh : null,
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: [
+                    _buildLoginTips(),
+                    _buildRegisterInput(),
+                    _buildRegisterBtn(),
+                  ],
+                ),
               ),
-            ),
-          );
-        },
+            ],
+          ),
+        ),
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () => _isPlaying ? null : _riveController.isActive = true,

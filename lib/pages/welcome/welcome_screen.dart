@@ -2,6 +2,7 @@ import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:hide_seek_cat_flutter2/common/values/values.dart';
+import 'package:hide_seek_cat_flutter2/common/widgets/widgets.dart';
 import 'package:hide_seek_cat_flutter2/pages/sign/sign.dart';
 /**
  * 欢迎页
@@ -46,58 +47,51 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
   }
 
   Widget _buildBootChildContent({image, title, content}) {
-    return LayoutBuilder(
-      builder: (BuildContext context, BoxConstraints constraints) {
-        var isDesktop = constraints.maxWidth > AppDeviceSizes.mobileWidth;
-        return Scrollbar(
-          child: ListView(
-            physics: isDesktop ? NeverScrollableScrollPhysics() : null,
-            scrollDirection: isDesktop ? Axis.horizontal : Axis.vertical,
-            children: [
-              Image.asset(
-                image,
-                width: isDesktop ? 0.4.sw : 1.sw,
-                alignment: Alignment.center,
-                fit: BoxFit.cover,
-              ),
-              Column(
-                children: [
-                  SizedBox(
-                    height: 30.h,
-                  ),
-                  AnimatedTextKit(
-                    animatedTexts: [
-                      TypewriterAnimatedText(
-                        title,
-                        speed: const Duration(milliseconds: 800),
-                        curve: Curves.bounceInOut,
-                        textStyle: Theme.of(context).textTheme.headline6?.copyWith(
-                          fontWeight: FontWeight.bold,
-                          letterSpacing: 1.5,
-                        ),
-                      ),
-                    ],
-                  ),
-                  SizedBox(
-                    height: 20.h,
-                  ),
-                  Padding(
-                    padding: EdgeInsets.symmetric(horizontal: 10.w),
-                    child: Text(
-                      content,
-                      softWrap: true,
-                      style: Theme.of(context).textTheme.bodyText2?.copyWith(
+    return Scrollbar(
+      child: SingleChildScrollView(
+        child: Column(
+          children: [
+            Image.asset(
+              image,
+              width: 1.sw,
+              height: !AppResponsive.isMobile(context) ? 1.sh : 0.3.sh,
+              alignment: Alignment.center,
+              fit: BoxFit.cover,
+            ),
+            SizedBox(
+              height: 20.h,
+            ),
+            Column(
+              children: [
+                AnimatedTextKit(
+                  animatedTexts: [
+                    TypewriterAnimatedText(
+                      title,
+                      speed: const Duration(milliseconds: 800),
+                      curve: Curves.bounceInOut,
+                      textStyle: Theme.of(context).textTheme.headline6?.copyWith(
+                        fontWeight: FontWeight.bold,
                         letterSpacing: 1.5,
-                        height: 2.0,
                       ),
                     ),
+                  ],
+                ),
+                Padding(
+                  padding: EdgeInsets.symmetric(horizontal: 10.w, vertical: 20.h),
+                  child: Text(
+                    content,
+                    softWrap: true,
+                    style: Theme.of(context).textTheme.bodyText2?.copyWith(
+                      letterSpacing: 1.5,
+                      height: 2.0,
+                    ),
                   ),
-                ],
-              ),
-            ],
-          ),
-        );
-      },
+                ),
+              ],
+            ),
+          ],
+        ),
+      ),
     );
   }
 

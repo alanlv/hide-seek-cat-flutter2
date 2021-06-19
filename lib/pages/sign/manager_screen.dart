@@ -60,7 +60,7 @@ class ManagerScreen extends StatelessWidget {
           SizedBox(
             height: 5.h,
           ),
-          Text('一个专为年轻人涉及的短视频社交平台，打造年轻人的社交元宇宙。'),
+          Text('一个专为年轻人开发的短视频社交平台，打造年轻人的社交元宇宙。'),
         ],
       ),
     );
@@ -83,50 +83,30 @@ class ManagerScreen extends StatelessWidget {
 
   Widget _buildPageChooseBtn(BuildContext context) {
     return Container(
-      child: LayoutBuilder(
-        builder: (BuildContext context, BoxConstraints constraints) {
-          var isDesktop = constraints.maxWidth > AppDeviceSizes.mobileWidth;
-          return Column(
-            children: [
-              FractionallySizedBox(
-                widthFactor: isDesktop ? 0.5 : 1.0,
-                child: AppSocialButton(
-                  onPressed: () => Navigator.pushNamed(context, LoginScreen.routeName),
-                  content: Text('已有账号，去登录'),
-                  img: AssetImage('assets/images/cat.png'),
-                ),
+      child: FractionallySizedBox(
+        widthFactor: 1.0,
+        child: Wrap(
+          alignment: WrapAlignment.spaceEvenly,
+          runSpacing: 10,
+          children: [
+            FractionallySizedBox(
+              widthFactor: !AppResponsive.isMobile(context) ? 0.3 : 1.0,
+              child: AppSocialButton(
+                onPressed: () => Navigator.pushNamed(context, LoginScreen.routeName),
+                content: Text('已有账号，去登录'),
+                img: AssetImage('assets/images/cat.png'),
               ),
-              FractionallySizedBox(
-                widthFactor: isDesktop ? 0.5 : 1.0,
-                child: Row(
-                    children: <Widget>[
-                      Expanded(
-                          child: Padding(
-                            padding: EdgeInsets.only(right: 10.w),
-                            child: Divider(height: isDesktop ? 40 : 20,),
-                          )
-                      ),
-                      Text("or"),
-                      Expanded(
-                          child: Padding(
-                            padding: EdgeInsets.only(left: 10.w),
-                            child: Divider(height: isDesktop ? 40 : 20,),
-                          )
-                      ),
-                    ]
-                ),
+            ),
+            FractionallySizedBox(
+              widthFactor: !AppResponsive.isMobile(context) ? 0.3 : 1.0,
+              child: AppSocialButton(
+                onPressed: () => Navigator.pushNamed(context, RegisterScreen.routeName),
+                content: Text('未拥有账号，去注册'),
+                img: AssetImage('assets/images/cat_dark.png'),
               ),
-              FractionallySizedBox(
-                widthFactor: isDesktop ? 0.5 : 1.0,
-                child: AppSocialButton(
-                  onPressed: () => Navigator.pushNamed(context, RegisterScreen.routeName),
-                  content: Text('未拥有账号，去注册'),
-                  img: AssetImage('assets/images/cat_dark.png'),
-                ),
-              ),
-            ],
-          );
-        },
+            ),
+          ],
+        ),
       ),
     );
   }

@@ -6,7 +6,7 @@ import 'package:flutter/material.dart';
  */
 class AppDeviceSizes {
 
-  static const int mobileWidth = 600;
+  static const int mobileWidth = 650;
   static const int webWidth = 1200;
 
 }
