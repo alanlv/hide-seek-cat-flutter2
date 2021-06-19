@@ -35,7 +35,7 @@ dependencies:
   # 文字动画
   animated_text_kit: ^4.2.1
   # rive动画
-  rive: ^0.7.18
+  rive: 0.7.18
   # json序列化
   json_annotation: ^4.0.1
   # 网络请求
