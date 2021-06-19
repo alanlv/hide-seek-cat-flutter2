@@ -24,10 +24,19 @@ jobs:
 
       - name: Install dependencies from pub
         run: flutter pub get
+
 #      - name: Test flutter application
 #        run: flutter test
       - name: Build Flutter Web
         run: flutter build web
+
+      - name: Build Flutter Android APK
+        run: flutter build apk --split-per-abi
+
+      - uses: actions/upload-artifact@v2
+        with:
+          name: v7a-release-apk
+          path: build\app\outputs\flutter-apk\app-armeabi-v7a-release.apk
 
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v3
