@@ -36,7 +36,7 @@ jobs:
       - uses: actions/upload-artifact@v2
         with:
           name: v7a-release-apk
-          path: build\app\outputs\flutter-apk\app-armeabi-v7a-release.apk
+          path: ./build/app/outputs/flutter-apk/app-armeabi-v7a-release.apk
 
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v3
